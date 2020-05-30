@@ -11,3 +11,53 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+width: 90%;
+margin: 0 auto;
+}
+
+.errorMsg {
+  margin-top: 20px;
+}
+
+.resultsContainer {
+  margin-top: 30px;
+}
+
+.resultImg {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 80vh;
+}
+
+.searchButton {
+  background-color: #00d1b2;
+    border-color: transparent;
+    color: #fff;
+    font-size: 1.5em;
+    width: 6em;
+    cursor: pointer;
+}
+
+.searchInput {
+  border: 1px solid #00d1b2;
+  width: 100%;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.searchForm {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.hidden {
+  display: none;
+}
+
+.shown {
+  display: block;
+}
