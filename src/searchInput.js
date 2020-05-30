@@ -11,13 +11,16 @@ class SearchInput extends React.Component {
 
   submitSearch(e) {
     let searchTerm = null;
-    if (e.keyCode === 13 && this.inputRef.current.value) {
+    if (e.type === "keydown" && e.keyCode != 13) {
+      return;
+    }
+    if (this.inputRef.current.value) {
       searchTerm = this.inputRef.current.value;
       this.fetchResults(searchTerm);
     }
   }
 
- fetchResults(searchTerm) {
+  fetchResults(searchTerm) {
     let searchResults = null;
     let errorType;
     fetch(
@@ -28,12 +31,12 @@ class SearchInput extends React.Component {
     )
       .then((response) => {
         if (response.status !== 200) {
-          errorType = 'status'
+          errorType = "status";
           return;
         }
         response.json().then((results) => {
           if (results.totalHits === 0) {
-            errorType = 'noResults'
+            errorType = "noResults";
             searchResults = null;
           } else {
             searchResults = results.hits;
@@ -48,13 +51,20 @@ class SearchInput extends React.Component {
 
   render() {
     return (
-        <div className="searchForm">
-        <input ref={this.inputRef}
+      <div className="searchForm">
+        <input
+          ref={this.inputRef}
           className="searchInput"
           placeholder="Search for an image"
           onKeyDown={this.submitSearch}
         ></input>
-        <button className='searchButton' onClick={this.submitSearch}>Search</button>
+        <button
+          className="searchButton"
+          onKeyDown={this.submitSearch}
+          onClick={this.submitSearch}
+        >
+          Search
+        </button>
       </div>
     );
   }

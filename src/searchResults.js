@@ -1,31 +1,21 @@
 import React from "react";
-class SearchResults extends React.Component {
-    constructor(props) {
-        super(props);
-        this.resultsContainerRef = React.createRef();
-        this.state = {
-            containerClass : 'hidden'
-        }
-      }
-    
-      componentDidMount() {
-        this.setState({
-            containerClass : 'shown'
-        });
-      }
-    render() {
-        return (
-            <div className={'resultsContainer ' + this.state.containerClass} ref={this.resultsContainerRef}>
-              {this.props.currentResults.map((result) => {
-                return <img
-                  className="resultImg"
-                  key={result.largeImageURL}
-                  src={result.largeImageURL}
-                ></img>
-              })}
-            </div>
+const SearchResults = ({ currentResults }) => {
+  return (
+    <React.Fragment>
+      <div className="resultsContainer">
+        {currentResults.map((result) => {
+          return (
+            <img
+              className="resultImg"
+              key={result.webformatURL}
+              src={result.webformatURL}
+            ></img>
           );
-    }
+        })}
+      </div>
+    </React.Fragment>
+  );
 };
 
 export default SearchResults;
+
